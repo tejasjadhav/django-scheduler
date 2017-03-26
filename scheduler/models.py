@@ -2,7 +2,6 @@ from __future__ import unicode_literals
 
 from uuid import uuid4
 
-from django.contrib.postgres.fields import JSONField
 from django.db import models
 
 
@@ -11,8 +10,8 @@ class ScheduledTask(models.Model):
     function_name = models.CharField(max_length=1000)
     description = models.TextField(blank=True, null=True)
 
-    args = JSONField(blank=True, null=True, default=dict)
-    kwargs = JSONField(blank=True, null=True, default=dict)
+    args = models.TextField(blank=True, null=True)
+    kwargs = models.TextField(blank=True, null=True)
     rrule = models.TextField(blank=True, null=True)
 
     STATUS_CREATED = 'created'
