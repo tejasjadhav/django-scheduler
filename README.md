@@ -16,6 +16,24 @@ Scheduler is a simple Django app for scheduling tasks at a specific time or repe
 * [Django](https://github.com/django/django/) 1.8+
 * [Celery](https://github.com/celery/celery/) 4.0+
 
+# Installation
+* Install `django-scheduler` using `git+https` method.
+```bash
+pip install git+https://tejasjadhav/django-scheduler.git
+```
+* Add `scheduler` in your `INSTALLED_APPS`
+```python
+INSTALLED_APPS = [
+    ...,
+    'scheduler',
+    ...,
+]
+```
+* Do the initial migration
+```bash
+python manage.py migrate scheduler
+```
+
 # Usage
 * Add the `celery.task` or `shared_task` decorator and specify `scheduler.tasks.RepeatTask` as the base.
 ```python
