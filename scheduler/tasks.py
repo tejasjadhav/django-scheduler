@@ -1,11 +1,11 @@
 from celery import Task
 from dateutil.rrule import rrulestr
 
-from .models import (
+from scheduler.models import (
     ScheduledTask,
     ScheduledTaskRunLog
 )
-from .scheduler import (
+from scheduler.scheduler import (
     CancelSchedule,
     TaskScheduler
 )

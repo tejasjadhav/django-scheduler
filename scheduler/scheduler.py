@@ -3,7 +3,7 @@ from json import dumps
 
 from django.utils import timezone
 
-from .models import ScheduledTask
+from scheduler.models import ScheduledTask
 
 
 class CancelSchedule(Exception):
