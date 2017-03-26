@@ -60,19 +60,35 @@ TaskScheduler.cancel(task_id)
 ```
 
 # API
-## `TaskScheduler.schedule`
-**Signature:** `TaskScheduler.schedule(func, description, args=None, kwargs=None, rrule_string=None, trigger_at=None, until=None)`
-Parameter | Type | Description
---- | --- | --
-`func` | `function` | **Required.** Task function.
-`description` | `str` | **Required.** Description of the task. **This may get deprecated in future.**
-`args` | `list` or `tuple` | **Optional.** **Default:** `None`. Arguments to be passed to `func`. **All values should be JSON serializable.**
-`kwargs` | `dict` | **Optional.** **Default:** `None`. Keyword arguments to be passed to `func`.  **All values should be JSON serializable.**
-`rrule_string` | `str` | **Optional.** **Default:** `None`. Recurrence rule. `func` will be executed as per the pattern defined by this rule. If not specified, `func` will be executed only once.
-`trigger_at` | `datetime` with `tzinfo` | **Optional.** **Default:** `None`. Sets the datetime for the first run of the task. If not specified, it defaults to `datetime.now()`.
-`until` | `datetime` with `tzinfo` | **Optional.** **Default:** `None`. Sets the end time for the task. The task will never execute after this datetime. If not specified, `task` will run as long as it is defined in the recurrence rule.
+### Schedule a task
+#### `TaskScheduler.schedule(func, description, args=None, kwargs=None, rrule_string=None, trigger_at=None, until=None)`
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `func` | `function` | **Required.** Task function. |
+| `description` | `str` | **Required.** Description of the task. **This may get deprecated in future.** |
+| `args` | `list` or `tuple` | **Optional.** **Default:** `None`. Arguments to be passed to `func`. **All values should be JSON serializable.** |
+| `kwargs` | `dict` | **Optional.** **Default:** `None`. Keyword arguments to be passed to `func`.  **All values should be JSON serializable.** |
+| `rrule_string` | `str` | **Optional.** **Default:** `None`. Recurrence rule. `func` will be executed as per the pattern defined by this rule. If not specified, `func` will be executed only once. |
+| `trigger_at` | `datetime` with `tzinfo` | **Optional.** **Default:** `None`. Sets the datetime for the first run of the task. If not specified, it defaults to `datetime.now()`. |
+| `until` | `datetime` with `tzinfo` | **Optional.** **Default:** `None`. Sets the end time for the task. The task will never execute after this datetime. If not specified, `task` will run as long as it is defined in the recurrence rule. |
 
 > **NOTE:** It is important that all the `datetime` instances passed should have timezone information, i. e., they should be [timezone aware](https://docs.djangoproject.com/en/1.10/topics/i18n/timezones/#naive-and-aware-datetime-objects). Use Django's [`timezone.now()`](https://docs.djangoproject.com/en/1.10/ref/utils/#django.utils.timezone.now) utility to get a timezone aware instance with `USE_TZ=True` in settings.
+
+##### Returns
+| Type | Description |
+| --- | --- |
+| `UUID` | Scheduled Task ID. |
+
+### Cancel scheduled task
+#### `TaskSchedule.cancel(task_id)`
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `scheduled_task_id` | `UUID` | **Required.** Scheduled Task ID. |
+
+#### Returns
+| Type | Description |
+| --- | --- |
+| `ScheduledTask` | Scheduled task model instance. **This may get deprecated in future.** |
 
 # Limitations
 * Currently, there is no support for `DTSTART` and `UNTIL` rules. Use `trigger_at` and `until` parameters. Even if you specify `DTSTART` and `UNTIL` rules, they will get overidden.
