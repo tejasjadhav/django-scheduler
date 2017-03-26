@@ -1,5 +1,7 @@
 Scheduler
 =========
+_This project is still in alpha stage. Try at your own risk._
+
 Task Scheduler for Django
 -------------------------
 
