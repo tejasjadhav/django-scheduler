@@ -2,8 +2,9 @@ from datetime import datetime
 from json import dumps
 
 from django.utils import timezone
+from django.utils.dateparse import parse_datetime
 
-from scheduler.models import ScheduledTask
+from .models import ScheduledTask
 
 
 class CancelSchedule(Exception):
@@ -41,8 +42,7 @@ class TaskScheduler(object):
         Returns:
             datetime: Datetime instance.
         """
-        return (datetime.strptime(_datetime_string, cls.DATE_FORMAT)
-                if _datetime_string else None)
+        return parse_datetime(_datetime_string) if _datetime_string else None
 
     @staticmethod
     def schedule(func, description, args=None, kwargs=None, rrule_string=None,
