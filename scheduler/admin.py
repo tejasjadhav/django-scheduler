@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from scheduler.models import (
+from .models import (
     ScheduledTask,
     ScheduledTaskRunLog
 )
