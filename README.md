@@ -19,7 +19,7 @@ Scheduler is a simple Django app for scheduling tasks at a specific time or repe
 # Installation
 * Install `django-scheduler` using `git+https` method.
 ```bash
-pip install git+https://tejasjadhav/django-scheduler.git
+pip install git+https://github.com/tejasjadhav/django-scheduler.git
 ```
 * Add `scheduler` in your `INSTALLED_APPS`
 ```python
