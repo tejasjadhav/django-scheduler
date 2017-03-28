@@ -112,3 +112,11 @@ TaskScheduler.cancel(task_id)
 
 # Limitations
 * Currently, there is no support for `DTSTART` and `UNTIL` rules. Use `trigger_at` and `until` parameters. Even if you specify `DTSTART` and `UNTIL` rules, they will get overidden.
+
+# Testing
+To run the tests, make sure you install all the dependencies in `requirements.txt` and then run `runtests.py`.
+
+```bash
+pip install -r requirements.txt
+python runtests.py
+```
