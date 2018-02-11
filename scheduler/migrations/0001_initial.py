@@ -35,7 +35,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('task_id', models.UUIDField()),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('scheduled_task', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='scheduler.ScheduledTask')),
+                ('scheduled_task', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='scheduler.ScheduledTask')),
             ],
         ),
     ]

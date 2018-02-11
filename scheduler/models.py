@@ -55,7 +55,7 @@ class ScheduledTask(models.Model):
 
 class ScheduledTaskRunLog(models.Model):
     task_id = models.UUIDField()
-    scheduled_task = models.ForeignKey(ScheduledTask)
+    scheduled_task = models.ForeignKey(ScheduledTask, on_delete=models.PROTECT)
 
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -64,3 +64,6 @@ class ScheduledTaskRunLog(models.Model):
 
     def __str__(self):
         return str(self.task_id)
+
+
+models.deletion.PROTECT
