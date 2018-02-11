@@ -18,6 +18,11 @@ setup(
     license='GPLv3',
     description='Task scheduler for Django',
     long_description=README,
+    install_requires=[
+        'Django',
+        'python-dateutil',
+        'celery',
+    ],
     author='Tejas Jadhav',
     author_email='developer.tejas.jadhav@gmail.com',
     classifiers=[
